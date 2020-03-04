@@ -17,6 +17,7 @@ public class Pixel extends Filter
     }
     
     public void display(PGraphics pg){
+      
       cam.loadPixels();
       int columns = pg.width;
       int rows = pg.height;
@@ -30,5 +31,6 @@ public class Pixel extends Filter
         }
       }
       cam.updatePixels();
+      flip(pg);
 }
 }

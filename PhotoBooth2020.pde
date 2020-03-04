@@ -104,10 +104,12 @@ void draw() {
   pushMatrix();
   translate(width/2, height/2);  
   imageMode(CENTER);
+  scale(-1, 1);
   image(pg,0,0);
-  pg.beginDraw(); 
-  pg.image(cam,0,0,width,height);
   popMatrix();
+  pg.beginDraw();
+  pg.image(cam,0,0,width,height);
+  
   for (int i = 0; i < filters.size(); i++) {
     if (filters.get(i).show) {
       filters.get(i).display(pg);
@@ -122,6 +124,9 @@ void draw() {
   blackWhite.iconDraw();
   paintBrush.iconDraw();
   contourLines.iconDraw();
+   
+  
+ 
 }
 
 void mousePressed() {

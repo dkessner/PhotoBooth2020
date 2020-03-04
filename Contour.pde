@@ -19,28 +19,11 @@ public class contourLines extends Filter
         return icon;
     }
     
-    public void flip(PGraphics pg) 
-    {
-      int w = pg.width;
-        int h = pg.height;
-
-        int[][] pixels = getPixels(pg);
-        int[][] newPixels = new int[h][w];
-
-        for (int i=0; i<h; i++)
-        {
-            for (int j=0; j<w; j++)
-            {
-                newPixels[i][j] = pixels[i][w-j-1];
-            }
-        }
-
-        setPixels(pg, newPixels);
-    }
+    
 
     public void display(PGraphics pg)
     {
-        //flip(pg);
+        flip(pg);
         //background(255);
         smooth();
         strokeWeight(2);
