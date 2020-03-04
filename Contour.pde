@@ -25,6 +25,7 @@ public class contourLines extends Filter
     {
         flip(pg);
         //background(255);
+        pushMatrix();
         smooth();
         strokeWeight(2);
         strokeJoin(ROUND);
@@ -52,6 +53,20 @@ public class contourLines extends Filter
           }
           endShape(CLOSE);
         }
+        
+        popMatrix();
+        mirror.iconDraw();
+         tint.iconDraw();
+         pixel.iconDraw();
+         thermalCam.iconDraw();
+         blackWhite.iconDraw();
+         paintBrush.iconDraw();
+         this.iconDraw();
+        
+        
+        
+        
+        
                    
 }
 }
