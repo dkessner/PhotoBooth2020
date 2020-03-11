@@ -24,7 +24,7 @@ public class Blur extends Filter
         for (int j = 0; j <cam.height; j++){
           color c = convolution(i,j,matrix,3,cam);
           int loc = i + j*cam.width;
-          pg.pixels[loc] = c;
+          cam.pixels[loc] = c;
          }
        }
       cam.updatePixels();

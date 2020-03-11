@@ -111,12 +111,12 @@ void draw() {
   popMatrix();
   pg.beginDraw();
   pg.image(cam,0,0,width,height);
-  
   for (int i = 0; i < filters.size(); i++) {
     if (filters.get(i).show) {
       filters.get(i).display(pg);
     }
   }
+  //pg.image(cam,0,0,width,height);
   pg.endDraw();
   
   mirror.iconDraw();
