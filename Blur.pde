@@ -6,6 +6,7 @@ public class Blur extends Filter
        super(icon, name, position, show);
     }
     
+    String name()
     {
         return "blur";
     }
