@@ -9,7 +9,7 @@ boolean clear = false;
 
 int threshold = 100;
 int fps = 30;
-int w = 320, h = 240;
+int w = 640, h = 360;
 PImage src, output;
 OpenCV opencv;
 
@@ -94,6 +94,8 @@ void setup() {
   contourLines = new contourLines(contourIcon, "contour", contourPos, false);
   filters.add(contourLines);
   
+  blur = new Blur(blurIcon, "blur", blurPos, false);
+  filters.add(blur);
 }
 
 void draw() {
@@ -124,7 +126,7 @@ void draw() {
   blackWhite.iconDraw();
   paintBrush.iconDraw();
   contourLines.iconDraw();
-   
+  blur.iconDraw();
   
  
 }
