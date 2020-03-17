@@ -28,5 +28,6 @@ public class Blur extends Filter
          }
        }
       cam.updatePixels();
+      pg.image(cam,0,0,width,height);
     }
 }

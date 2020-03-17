@@ -116,7 +116,6 @@ void draw() {
       filters.get(i).display(pg);
     }
   }
-  //pg.image(cam,0,0,width,height);
   pg.endDraw();
   
   mirror.iconDraw();
@@ -147,6 +146,7 @@ void mousePressed() {
 }
 void keyPressed() {
   if (key == ' '){
-    cam.stop();
+    if (second()=1){
+      
   }
 }
