@@ -1,4 +1,7 @@
-//hello
+//hello! i didn't want to add anything bc the code wasn't running before i began, so I'm playing around with 
+//the applied filters/possible filters in comments - Catherine
+
+
 //gabi testing push
 
 import processing.video.*;
@@ -15,6 +18,7 @@ OpenCV opencv;
 
 ArrayList<Contour> contours;
 ArrayList<Contour> polygons;
+
 
 Capture cam;
 PImage mirrorIcon;
@@ -44,10 +48,16 @@ PVector paintBrushPos = new PVector(370, 470);
 PVector contourPos = new PVector(310, 470);
 PVector blurPos = new PVector(250,470);
 ArrayList<Filter> filters;
+//ArrayList<Filter> possiblefilters;
+//ArrayList<Filter> appliedfilters;
+
 
 void setup() {
   size(700, 500);
   filters = new ArrayList<Filter>();
+//possiblefilters = new ArrayList<Filter>();
+//appliedfilters = new ArrayList<Filter>();
+
   frameRate(fps);
 
     cam = new Capture(this, w,h,fps);
@@ -136,6 +146,11 @@ void mousePressed() {
     if ((abs(mouseX-f.position.x) <= 30 && abs(mouseY-f.position.y) <= 30)) {
       println("worked!");
       f.show = !f.show; 
+      //if (possiblefilters.get(possiblefilters.indexOf(f)) != null)
+        // {
+          //Filter temp = possiblefilters.get(possiblefilters.indexOf(f);
+          //possiblefilters.remove(possiblefilters.indexOf(f));
+          //appliedfilters.add(temp);
   }
   }
   if (paintBrush.show == true && abs(mouseX-650) <= 30 && abs(mouseY-50) <= 30) {
