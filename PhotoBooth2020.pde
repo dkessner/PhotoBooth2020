@@ -30,6 +30,10 @@ PImage paintBrushIcon;
 PImage contourIcon;
 PImage trash;
 PImage blurIcon;
+PImage one,two,three;
+int numFrames = 3;
+int frame = -1;
+PImage[] countdown = new PImage[numFrames];
 PGraphics pg;
 Filter mirror;
 Filter tint;
@@ -73,6 +77,12 @@ void setup() {
   paintBrushIcon = loadImage("paintbrush.png");
   contourIcon = loadImage("contour.png");
   blurIcon = loadImage("blur.png");
+  /*one = loadImage("one.png");
+  two = loadImage("two.png");
+  three = loadImage("three.png"); */
+  countdown[0] = loadImage("one.png");
+  countdown[1] = loadImage("two.png");
+  countdown[2] = loadImage("three.png");
   pixelIcon.resize(70,70);
   mirrorIcon.resize(70,70);
   tintIcon.resize(60,60);
@@ -137,7 +147,16 @@ void draw() {
   contourLines.iconDraw();
   blur.iconDraw();
   
- 
+  if (key == ' '){
+      PImage photo = get(0,0,width,470);
+      frame = frame+1;
+    if (frame >= numFrames){
+      photo.save("photobooth.png");
+    }
+    if (frame < numFrames){
+      image(countdown[frame],width/2,height/2);
+    }
+  }
 }
 
 void mousePressed() {
@@ -159,9 +178,9 @@ void mousePressed() {
     println("clear");
   }
 }
-void keyPressed() {
-  if (key == ' '){
-    if (second()=1){
-      
-  }
+
+void keyReleased() {
+    if (key == ' '){
+      frame = -1;
+    }
 }
