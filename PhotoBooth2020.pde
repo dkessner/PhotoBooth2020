@@ -80,9 +80,9 @@ void setup() {
   /*one = loadImage("one.png");
   two = loadImage("two.png");
   three = loadImage("three.png"); */
-  countdown[0] = loadImage("one.png");
+  countdown[2] = loadImage("one.png");
   countdown[1] = loadImage("two.png");
-  countdown[2] = loadImage("three.png");
+  countdown[0] = loadImage("three.png");
   pixelIcon.resize(70,70);
   mirrorIcon.resize(70,70);
   tintIcon.resize(60,60);
