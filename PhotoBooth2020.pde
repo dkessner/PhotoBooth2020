@@ -1,6 +1,6 @@
 
 //gabi testing push
-
+import java.awt.Rectangle;
 import processing.video.*;
 import gab.opencv.Contour;
 import gab.opencv.OpenCV;
@@ -12,6 +12,8 @@ int fps = 30;
 int w = 320, h = 240;
 PImage src, output;
 OpenCV opencv;
+Rectangle[] faces;
+OpenCV opencvfaces;
 
 ArrayList<Contour> contours;
 ArrayList<Contour> polygons;
@@ -53,7 +55,11 @@ void setup() {
     cam = new Capture(this, w,h,fps);
     cam.start(); 
     opencv = new OpenCV(this, w, h);
-    opencv.gray();   
+    opencv.gray();  
+    
+    opencvfaces = new OpenCV(this, "test1.jpg");
+    opencv.loadCascade(OpenCV.CASCADE_FRONTALFACE);  
+    faces = opencv.detect();
 
   mirrorIcon = loadImage("mirror.png");
   tintIcon = loadImage("tint.png");
