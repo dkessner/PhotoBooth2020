@@ -1,3 +1,6 @@
+//hello! i didn't want to add anything bc the code wasn't running before i began, so I'm playing around with 
+//the applied filters/possible filters in comments - Catherine
+
 
 //gabi testing push
 import java.awt.Rectangle;
@@ -9,7 +12,7 @@ boolean clear = false;
 
 int threshold = 100;
 int fps = 30;
-int w = 320, h = 240;
+int w = 640, h = 360;
 PImage src, output;
 OpenCV opencv;
 Rectangle[] faces;
@@ -17,6 +20,7 @@ OpenCV opencvfaces;
 
 ArrayList<Contour> contours;
 ArrayList<Contour> polygons;
+
 
 Capture cam;
 PImage mirrorIcon;
@@ -28,6 +32,10 @@ PImage paintBrushIcon;
 PImage contourIcon;
 PImage trash;
 PImage blurIcon;
+PImage one,two,three;
+int numFrames = 3;
+int frame = -1;
+PImage[] countdown = new PImage[numFrames];
 PGraphics pg;
 Filter mirror;
 Filter tint;
@@ -46,10 +54,16 @@ PVector paintBrushPos = new PVector(370, 470);
 PVector contourPos = new PVector(310, 470);
 PVector blurPos = new PVector(250,470);
 ArrayList<Filter> filters;
+//ArrayList<Filter> possiblefilters;
+//ArrayList<Filter> appliedfilters;
+
 
 void setup() {
   size(700, 500);
   filters = new ArrayList<Filter>();
+//possiblefilters = new ArrayList<Filter>();
+//appliedfilters = new ArrayList<Filter>();
+
   frameRate(fps);
 
     cam = new Capture(this, w,h,fps);
@@ -69,6 +83,12 @@ void setup() {
   paintBrushIcon = loadImage("paintbrush.png");
   contourIcon = loadImage("contour.png");
   blurIcon = loadImage("blur.png");
+  /*one = loadImage("one.png");
+  two = loadImage("two.png");
+  three = loadImage("three.png"); */
+  countdown[0] = loadImage("one.png");
+  countdown[1] = loadImage("two.png");
+  countdown[2] = loadImage("three.png");
   pixelIcon.resize(70,70);
   mirrorIcon.resize(70,70);
   tintIcon.resize(60,60);
@@ -100,6 +120,8 @@ void setup() {
   contourLines = new contourLines(contourIcon, "contour", contourPos, false);
   filters.add(contourLines);
   
+  blur = new Blur(blurIcon, "blur", blurPos, false);
+  filters.add(blur);
 }
 
 void draw() {
@@ -115,7 +137,6 @@ void draw() {
   popMatrix();
   pg.beginDraw();
   pg.image(cam,0,0,width,height);
-  
   for (int i = 0; i < filters.size(); i++) {
     if (filters.get(i).show) {
       filters.get(i).display(pg);
@@ -130,9 +151,18 @@ void draw() {
   blackWhite.iconDraw();
   paintBrush.iconDraw();
   contourLines.iconDraw();
-   
+  blur.iconDraw();
   
- 
+  if (key == ' '){
+      PImage photo = get(0,0,width,470);
+      frame = frame+1;
+    if (frame >= numFrames){
+      photo.save("photobooth.png");
+    }
+    if (frame < numFrames){
+      image(countdown[frame],width/2,height/2);
+    }
+  }
 }
 
 void mousePressed() {
@@ -141,6 +171,11 @@ void mousePressed() {
     if ((abs(mouseX-f.position.x) <= 30 && abs(mouseY-f.position.y) <= 30)) {
       println("worked!");
       f.show = !f.show; 
+      //if (possiblefilters.get(possiblefilters.indexOf(f)) != null)
+        // {
+          //Filter temp = possiblefilters.get(possiblefilters.indexOf(f);
+          //possiblefilters.remove(possiblefilters.indexOf(f));
+          //appliedfilters.add(temp);
   }
   }
   if (paintBrush.show == true && abs(mouseX-650) <= 30 && abs(mouseY-50) <= 30) {
@@ -149,8 +184,9 @@ void mousePressed() {
     println("clear");
   }
 }
-void keyPressed() {
-  if (key == ' '){
-    cam.stop();
-  }
+
+void keyReleased() {
+    if (key == ' '){
+      frame = -1;
+    }
 }
