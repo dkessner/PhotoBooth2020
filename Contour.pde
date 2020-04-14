@@ -36,7 +36,7 @@ public class contourLines extends Filter
         ArrayList<Contour> contours = opencv.findContours();
         println("found " + contours.size() + " contours");
         
-        scale(2.2);
+        scale(1.5);
                 
         PImage output = opencv.getOutput();
 
