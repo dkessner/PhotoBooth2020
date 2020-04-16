@@ -11,7 +11,7 @@ boolean filterToggle = false;
 boolean clear = false;
 
 int threshold = 100;
-int fps = 30;
+int fps = 60;
 int w = 640, h = 360;
 PImage src, output;
 OpenCV opencv;
@@ -151,7 +151,7 @@ void draw() {
       PImage photo = get(0,0,width,470);
       frame = frame+1;
     if (frame >= numFrames){
-      photo.save("photobooth.png");
+      photo.save("photobooth-####.png");
     }
     if (frame < numFrames){
       image(countdown[frame],width/2,height/2);
