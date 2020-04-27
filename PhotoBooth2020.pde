@@ -1,8 +1,4 @@
-//hello! i didn't want to add anything bc the code wasn't running before i began, so I'm playing around with 
-//the applied filters/possible filters in comments - Catherine
 
-
-//gabi testing push
 import processing.video.Capture;
 import java.awt.Rectangle;
 import processing.video.*;
@@ -209,12 +205,12 @@ void draw() {
   face.iconDraw();
   
   if (key == ' '){
-      PImage photo = get(0,0,width,470);
+      //PImage photo = get(0,0,width,470);
       frame = frame+1;
     if (frame >= numFrames){
-      photo.save("photobooth-####.png");
+      saveFrame("photobooth-####.png");
     }
-    if (frame < numFrames){
+    if (frame > numFrames){
       image(countdown[frame],width/2,height/2);
     }
   }
