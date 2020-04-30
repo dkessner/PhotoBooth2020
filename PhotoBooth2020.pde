@@ -1,4 +1,3 @@
-
 import processing.video.Capture;
 import java.awt.Rectangle;
 import processing.video.*;
@@ -129,9 +128,6 @@ void setup() {
   paintBrushIcon = loadImage("paintbrush.png");
   contourIcon = loadImage("contour.png");
   blurIcon = loadImage("blur.png");
-  /*one = loadImage("one.png");
-  two = loadImage("two.png");
-  three = loadImage("three.png"); */
   countdown[2] = loadImage("one.png");
   countdown[1] = loadImage("two.png");
   countdown[0] = loadImage("three.png");
